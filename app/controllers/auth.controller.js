@@ -44,7 +44,6 @@ exports.signin = async (req, res) => {
     if (responseHelper.errors.length === 0) {
       await bcrypt.compare(req.body.password, user.password).then((compare) => {
         if (!compare) {
-          console.log("salah");
           responseHelper.errors.push ("Password missmatch");
           responseHelper.statusCode = 500;
         } else {
@@ -52,7 +51,6 @@ exports.signin = async (req, res) => {
             expiresIn: 86400,
           });
           responseHelper.statusCode = 200;
-          console.log(responseHelper.message);
         }
       });
     }

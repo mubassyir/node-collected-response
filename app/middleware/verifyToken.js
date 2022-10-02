@@ -8,10 +8,7 @@ verifyToken = (req, res, next) => {
       reset helper
                     */
   responseHelper.errors = [];
-  for (const key in responseHelper.message) {
-    console.log(responseHelper.message[key]);
-    delete responseHelper.message[key];
-  }
+  responseHelper.message = {};
 
   let token = req.headers["x-access-token"];
 
@@ -22,11 +19,9 @@ verifyToken = (req, res, next) => {
     jwt.verify(token, config.secret, (err, decoded) => {
       if (err) {
         responseHelper.errors.push("Unauthorized");
-      }else{
+      } else {
         req.userId = decoded.id;
       }
-      
-      
     });
   }
   next();
