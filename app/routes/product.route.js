@@ -10,10 +10,10 @@ module.exports = function(app) {
     next();
   });
 
-  app.get("/api/products",middleware.verifyToken,productController.showData);
-  app.post("/api/products",[middleware.verifyToken,middleware.product],productController.addProduct);
-  app.get("/api/products/:id",[middleware.verifyToken],productController.getById);
-  app.put("/api/products/:id",middleware.verifyToken,productController.updateProduct);
-  app.delete("/api/products/:id",middleware.verifyToken,productController.deleteById)
+  app.get("/v1/products",middleware.verifyToken,productController.showData);
+  app.post("/v1/products",[middleware.verifyToken,middleware.product],productController.addProduct);
+  app.get("/v1/products/:id",[middleware.verifyToken],productController.getById);
+  app.put("/v1/products/:id",middleware.verifyToken,productController.updateProduct);
+  app.delete("/v1/products/:id",middleware.verifyToken,productController.deleteById)
 
 };

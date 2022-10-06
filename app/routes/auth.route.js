@@ -10,6 +10,6 @@ module.exports = function(app) {
     next();
   });
 
-  app.post("/api/signup",middleware.signUp,controller.signup);
-  app.post("/api/signin", middleware.signIn ,controller.signin);
+  app.post("/auth/signup",middleware.signUp,controller.signup);
+  app.post("/auth/login", middleware.signIn ,controller.signin);
 };

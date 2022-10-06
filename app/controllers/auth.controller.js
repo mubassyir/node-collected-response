@@ -34,7 +34,7 @@ exports.signup = async (req, res) => {
 exports.signin = async (req, res) => {
   await User.findOne({
     where: {
-      username: req.body.username,
+      email: req.body.email,
     },
   }).then(async (user) => {
     if (!user) {
@@ -47,7 +47,7 @@ exports.signin = async (req, res) => {
           responseHelper.errors.push ("Password missmatch");
           responseHelper.statusCode = 500;
         } else {
-          responseHelper.message = jwt.sign({ id: user.id }, config.secret, {
+          responseHelper.token = jwt.sign({ id: user.id }, config.secret, {
             expiresIn: 86400,
           });
           responseHelper.statusCode = 200;
@@ -57,7 +57,7 @@ exports.signin = async (req, res) => {
   });
   res.status(responseHelper.statusCode).json({
     status: responseHelper.errors.length === 0 ? "OK" : "ERROR",
-    message: responseHelper.message,
+    token: responseHelper.token,
     errors: responseHelper.errors,
   });
 };

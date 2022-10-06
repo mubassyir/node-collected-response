@@ -24,7 +24,7 @@ db.sequelize.sync({force: false}).then(() => {
 
 
 // simple route
-app.get("/", (req, res) => {
+app.get("/v2/products", (req, res) => {
     res.json({ message: "Congrats, it works"});
   });
 

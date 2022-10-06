@@ -1,0 +1,7 @@
+Cara instalasi
+
+clone repository terlebih dahulu
+buat database di lokal pc
+lakukan konfigurasi pada .env
+install package dengan perintah npm install pada terminal
+node/nodemon index.js

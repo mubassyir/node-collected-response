@@ -7,9 +7,9 @@ signIn = (req, res, next) => {
     delete responseHelper.message[key];
   }
 
-  const { username, password } = req.body;
-  if (!username) {
-    responseHelper.errors.push("username cannot blank");
+  const { email, password } = req.body; 
+  if (!email) {
+    responseHelper.errors.push("email cannot blank");
     responseHelper.statusCode = 500;
   }
   if (!password) {

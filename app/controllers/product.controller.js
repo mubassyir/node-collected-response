@@ -113,9 +113,10 @@ exports.deleteById = async (req, res) => {
     const { id } = req.params;
     await Product.findByPk(id)
       .then((i) => {
-        Product.destroy({ where: { product_id: i.product_id } }).then((j) => {
-          responseHelper.message = i;
+        responseHelper.message = i;
           responseHelper.statusCode = 201;
+        Product.destroy({ where: { product_id: i.product_id } }).then((j) => {
+       
         });
       })
       .catch((err) => {
